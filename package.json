@@ -92,5 +92,20 @@
     "plugins": [
       "transform-es2015-modules-commonjs"
     ]
-  }
+  },
+  "description": "_Last updated: May 3, 2020 (by Fang)_",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/people-power-solar/peoplepower-web.git"
+  },
+  "author": "People Power Solar Cooperative, Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/people-power-solar/peoplepower-web/issues"
+  },
+  "homepage": "https://github.com/people-power-solar/peoplepower-web#readme"
 }
