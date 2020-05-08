@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { toggleValidColor } from '../src/lib/adminUtils';
+import { toggleValidColor } from '../../src/lib/adminUtils';
 
 describe('adminUtils', function() {
   describe('#toggleValidColor', function() {
