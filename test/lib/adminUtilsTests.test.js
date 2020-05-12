@@ -9,7 +9,9 @@ import { store } from '../../src/lib/redux/store';
 import {
   toggleValidColor,
   validateField,
-  removeOwner
+  removeOwner,
+  getOwnerRecordsForProjectGroup,
+  inviteMember
 } from '../../src/lib/adminUtils';
 
 describe('adminUtils', () => {
@@ -248,6 +250,57 @@ describe('adminUtils', () => {
         JSON.stringify(request.updateProjectGroup.getCall(0).args[1].ownerIds)
       ).to.equal(JSON.stringify([1, 2, 3, 4]));
       expect(userData.refreshUserData.getCall(0).args[0]).to.equal(365);
+    });
+  });
+
+  describe('#getOwnerRecordsForProjectGroup', () => {
+    const owners = [
+      { id: 0, onboardingStep: 0 },
+      { id: 1, onboardingStep: -1 },
+      { id: 2, onboardingStep: -1 }
+    ];
+    const projectGroup = {
+      ownerIds: [0, 1, 2]
+    };
+
+    beforeEach(() => {
+      sandbox.stub(request, 'getOwnersByIds').returns(owners);
+    });
+
+    afterEach(() => {
+      sandbox.restore();
+    });
+
+    it('should only get owners with onboardingStep of -1', async () => {
+      const result = await getOwnerRecordsForProjectGroup(projectGroup);
+
+      expect(JSON.stringify(result)).to.equal(
+        JSON.stringify([
+          { id: 1, onboardingStep: -1 },
+          { id: 2, onboardingStep: -1 }
+        ])
+      );
+    });
+  });
+
+  describe('#inviteMember', () => {
+    // TODO: make stock test objects for each object to use in places like this
+    const pledgeInvite = { foo: 'bar' };
+
+    beforeEach(() => {
+      sandbox.stub(request, 'createPledgeInvite');
+    });
+
+    afterEach(() => {
+      sandbox.restore();
+    });
+
+    it('should create a pledge invite object', async () => {
+      await inviteMember(pledgeInvite);
+
+      expect(request.createPledgeInvite.getCall(0).args[0]).to.equal(
+        pledgeInvite
+      );
     });
   });
 });
