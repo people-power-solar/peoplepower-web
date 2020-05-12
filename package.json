@@ -38,7 +38,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "mocha --recursive --require @babel/register --require babel-polyfill --file test/setup.js --require mock-local-storage",
+    "test": "mocha --recursive --file test/setup.js --require @babel/register --require babel-polyfill --require mock-local-storage",
     "eject": "react-scripts eject",
     "generate-schema": "generate-airtable-schema && pretty-quick",
     "deploy": "react-scripts build && mv ./build/index.html ./build/200.html &&surge ./build https://peoplepower.surge.sh"
@@ -76,14 +76,18 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
+    "fetch-mock": "^9.5.1",
     "husky": "^3.0.9",
     "jsdom": "^16.2.2",
     "lint-staged": "^9.4.2",
     "mocha": "^7.1.2",
     "mocha-jsdom": "^2.0.0",
     "mock-local-storage": "^1.1.12",
+    "node-fetch": "^2.6.0",
     "prettier": "1.18.2",
-    "pretty-quick": "^2.0.0"
+    "pretty-quick": "^2.0.0",
+    "redux-mock-store": "^1.5.4",
+    "sinon": "^9.0.2"
   },
   "husky": {
     "hooks": {

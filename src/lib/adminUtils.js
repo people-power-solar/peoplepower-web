@@ -33,7 +33,7 @@ const ValidateUSState = value => {
   if (USStates.map(s => s.toUpperCase()).indexOf(upperCaseValue) !== -1) {
     return '';
   }
-  return 'Invalid State';
+  return 'Invalid state';
 };
 
 // Specify special validation functions for fields
@@ -97,7 +97,7 @@ export async function removeOwner(owner) {
   });
 
   // Refresh local copy of data after updating owners
-  const { owner: loggedInOwner } = store.getState().userData;
+  const loggedInOwner = store.getState().userData;
   await refreshUserData(loggedInOwner.id);
 }
 
