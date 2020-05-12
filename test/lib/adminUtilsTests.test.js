@@ -11,7 +11,8 @@ import {
   validateField,
   removeOwner,
   getOwnerRecordsForProjectGroup,
-  inviteMember
+  inviteMember,
+  triggerEmail
 } from '../../src/lib/adminUtils';
 
 describe('adminUtils', () => {
@@ -284,7 +285,7 @@ describe('adminUtils', () => {
   });
 
   describe('#inviteMember', () => {
-    // TODO: make stock test objects for each object to use in places like this
+    // TODO OP-24: make stock test objects for each object to use in places like this
     const pledgeInvite = { foo: 'bar' };
 
     beforeEach(() => {
@@ -301,6 +302,32 @@ describe('adminUtils', () => {
       expect(request.createPledgeInvite.getCall(0).args[0]).to.equal(
         pledgeInvite
       );
+    });
+  });
+
+  describe('#triggerEmail', () => {
+    // TODO OP-24: create dummy object for this
+    const pledgeInvite = { foo: 'bar' };
+
+    beforeEach(() => {
+      fetchMock.mock('end:/invite', pledgeInvite);
+    });
+
+    afterEach(() => {
+      fetchMock.restore();
+    });
+
+    it('should successfully trigger emails to the right URL', async () => {
+      const response = await triggerEmail(0);
+
+      expect(JSON.stringify(response)).to.equal(JSON.stringify(pledgeInvite));
+    });
+    it('should return an error if the email fails', async () => {
+      fetchMock.mock('end:/invite', 400, { overwriteRoutes: true });
+
+      const response = await triggerEmail(0);
+
+      expect(response).to.equal('error');
     });
   });
 });

@@ -133,7 +133,7 @@ export async function triggerEmail(pledgeInviteId) {
     );
 
     const emailResponse = await emailInvite.json();
-    const { status } = emailResponse;
+    const status = emailResponse;
     return status;
   } catch (err) {
     return 'error';
