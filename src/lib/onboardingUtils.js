@@ -85,7 +85,7 @@ const validatePassword = value => {
 
 // Ensure value is a number
 const validateNumber = value => {
-  return !Number.isNaN(value) ? '' : 'Must be a number';
+  return !Number.isNaN(Number(value)) ? '' : 'Must be a number';
 };
 
 // Ensure shares is a valid number
