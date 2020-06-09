@@ -285,7 +285,7 @@ describe('adminUtils', () => {
   });
 
   describe('#inviteMember', () => {
-    // TODO OP-24: make stock test objects for each object to use in places like this
+    // TODO OP-24: make stock test objects for each object to use in places like this.
     const pledgeInvite = { foo: 'bar' };
 
     beforeEach(() => {
