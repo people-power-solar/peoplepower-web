@@ -9,7 +9,6 @@ schemaRaw.json
 
 # testing
 /coverage
-.nyc_output
 
 # production
 /build
