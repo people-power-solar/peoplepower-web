@@ -33,7 +33,7 @@ const ValidateUSState = value => {
   if (USStates.map(s => s.toUpperCase()).indexOf(upperCaseValue) !== -1) {
     return '';
   }
-  return 'Invalid state';
+  return 'Invalid State';
 };
 
 // Specify special validation functions for fields
@@ -97,7 +97,7 @@ export async function removeOwner(owner) {
   });
 
   // Refresh local copy of data after updating owners
-  const loggedInOwner = store.getState().userData;
+  const { owner: loggedInOwner } = store.getState().userData;
   await refreshUserData(loggedInOwner.id);
 }
 
@@ -133,7 +133,7 @@ export async function triggerEmail(pledgeInviteId) {
     );
 
     const emailResponse = await emailInvite.json();
-    const status = emailResponse;
+    const { status } = emailResponse;
     return status;
   } catch (err) {
     return 'error';
