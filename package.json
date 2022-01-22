@@ -83,7 +83,7 @@
     "mocha": "^7.1.2",
     "mocha-jsdom": "^2.0.0",
     "mock-local-storage": "^1.1.12",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^3.1.1",
     "prettier": "1.18.2",
     "pretty-quick": "^2.0.0",
     "redux-mock-store": "^1.5.4",
